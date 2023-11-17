@@ -1,0 +1,7 @@
+{
+  "name": "Pparty",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

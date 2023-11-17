@@ -1,0 +1,65 @@
+#GET
+
+GET http://localhost:8080/api/v1/festa
+Content-Type: application/json
+###
+
+#GET
+
+GET http://localhost:8080/api/v1/festa/2/festa
+Content-Type: application/json
+###
+
+
+#POST
+
+POST http://localhost:8080/api/v1/festa
+Content-Type: application/json
+
+{
+    "data": "2020-11-16T04:25:03",
+    "titulo": "Festa Teste vivencia",
+    "enderecofesta": "Timoteo, funcionarios",
+    "valorIngresso": 45,
+    "cardapio": "Salgadinho, open bar",
+    "qingresso": 5,
+    "categoria" : "festa grande",
+    "latitude": "10000" ,
+    "longitude": "10000",
+    "idUsuariof": 1
+}
+###
+
+#GET
+
+GET http://localhost:8080/api/v1/festa/pesquisa?pesquisa=Cef
+###
+
+#PUT
+PUT http://localhost:8080/api/v1/festa
+Content-Type: application/json
+
+{
+    "data": "2023-09-05",
+    "titulo": "Festa Party",
+    "endereco": "Fabriciano, floresta",
+    "valorIngresso": 90,
+    "rating": 4,
+    "cardapio": "Bebidas, open bar",
+    "qIngresso": 1,
+    "rating" : 4,
+    "ratingQuant" : 100,
+    "categoria" : "festa enorme",
+    "latitude": "10000" ,
+    "longitude": "10000",
+    "tbUsuario_idUsuario": 1,
+    "idFesta": 1
+}
+###
+
+#DELETE
+DELETE   http://localhost:8080/api/v1/festa/2
+Content-Type: application/json
+
+
+###

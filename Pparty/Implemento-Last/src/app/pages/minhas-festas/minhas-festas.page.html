@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defautHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Minhas Festas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form class="card">
+    <div class="card-content">
+      <div class="card-content-area">
+        <ion-list>
+          <ion-item-sliding *ngFor="let festa of festas; index as i">
+            <ion-item [routerLink]="['/add-festa/', festa.idFesta]" detail>
+              <!-- <ion-thumbnail slot="start">
+              <ion-img alt="Silhouette of mountains" [src]="fotos[i].imagem" />
+            </ion-thumbnail> -->
+              <ion-label>
+                <h2>
+                  {{festa.titulo}}
+                </h2>
+                <p> {{festa.enderecofesta}} </p>
+                <p> {{festa.cardapio}} </p>
+              </ion-label>
+            </ion-item>
+          </ion-item-sliding>
+        </ion-list>
+        <!-- <ion-list>
+        <ion-item-sliding *ngFor="let festa of festas; index as i">
+          <ion-item [routerLink]="['/visualizar-festa/', festa.id]" detail>
+              <ion-thumbnail slot="start">
+                <ion-img alt="Silhouette of mountains" [src]="fotos[i].imagem" />
+              </ion-thumbnail>
+              <ion-label>
+                <h2>
+                  {{festa.titulo}}
+                </h2>
+                <p> {{festa.enderecofesta}} </p>
+                <p> {{festa.cardapio}} </p>
+            </ion-label>
+          </ion-item>
+        </ion-item-sliding>
+      </ion-list> -->
+      </div>
+    </div>
+  </form>
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button routerLink="/inicio" color="light">
+      <ion-icon name="exit"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/add-festa" color="primary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

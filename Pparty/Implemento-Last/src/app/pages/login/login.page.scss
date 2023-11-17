@@ -1,0 +1,95 @@
+    body {
+        padding: 0;
+        margin: 0;
+    }
+
+    #login {
+        display: flex;
+
+        align-items: center;
+        
+        justify-content: center;
+    
+        height: 100vh;
+    
+        background: url('/assets/images/telas-entrar.jpg') !important;
+
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+
+    }
+
+    .card {
+        background-color: rgba(227, 220, 220, 0.3);
+
+    
+        padding: 40px;
+    
+        border-radius: 10px;
+    
+        width:280px;
+    
+    }
+
+    .card-content-area {
+        display: flex;
+    
+        flex-direction: column;
+    
+        padding:10px 0;
+    
+    }
+
+    .card-content-area input {
+
+        margin-top: 10px;
+
+        margin-bottom: 10px;
+    
+        padding: 5px;
+    
+        background-color: transparent;
+    
+        border:none;
+    
+        border-bottom: 1px solid white;
+    
+        outline: none;
+    
+        color: #fff;
+    
+    }
+
+    .card-content ion-label {
+
+        // color: black;
+    
+        font-size: 15px;
+    
+        opacity: 0.8;
+    
+    }
+
+    .card-content ion-item {
+
+        background-color: #3880ff;
+    
+        font-size: 12px;
+    
+        opacity: 0.8;
+
+        border-radius: 5px;
+    
+    }
+
+    .card-content ion-button {
+
+        color: solid white ;
+    
+        font-size: 10px;
+    
+        opacity: 0.8;
+
+        
+    
+    }

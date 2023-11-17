@@ -1,0 +1,52 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defautHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-content [fullscreen]="true">
+    <form [formGroup]="formGroup">
+  
+      <ion-item lines="none">
+        <ion-label position="stacked">Nome</ion-label>
+        <ion-input  type="text" class="form-control" formControlName="nome" [readonly]="true"></ion-input>
+      </ion-item>
+  
+      <ion-item lines="none">
+        <ion-label position="stacked">Email</ion-label>
+        <ion-input  type="text" class="form-control" formControlName="email" [readonly]="true"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label position="stacked">datanasc</ion-label>
+        <ion-input  type="text" class="form-control" formControlName="datanasc"[readonly]="true"></ion-input>
+      </ion-item>
+
+      <ion-item lines="none">
+        <ion-label position="stacked">senha</ion-label>
+        <ion-input  type="text" class="form-control" formControlName="senha" [readonly]="true"></ion-input>
+      </ion-item>
+      
+      <ion-item lines="none">
+        <ion-label position="stacked">endereco</ion-label>
+        <ion-input  type="text" class="form-control" formControlName="endereco" [readonly]="true"></ion-input>
+      </ion-item>
+  
+  
+    </form>
+    <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+      <ion-fab-button routerLink="/inicio" color="light">
+        <ion-icon name="exit"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+    <ion-button (click)="Sair()" expand="block" color="dark" class="custom-button">Sair da conta</ion-button>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button routerLink="/minhas-festas" color="primary">
+        <ion-icon name="add"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+</ion-content>

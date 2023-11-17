@@ -1,0 +1,66 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defautHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Visualizar Festa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="formGroup">
+    <ion-item>
+      <ion-label position="stacked">Titulo</ion-label>
+      <ion-input type="text" class="form-control border-0 shadow-none" formControlName="titulo" readonly></ion-input>
+    </ion-item>
+   
+    <ion-item>
+      <ion-label position="stacked">Endereco da Festa</ion-label>
+      <ion-input type="text" class="form-control border-0 shadow-none" formControlName="endereco" readonly></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Data da Festa</ion-label>
+      <ion-input type="date" class="form-control border-0 shadow-none" formControlName="data" readonly></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Valor do Ingresso</ion-label>
+      <ion-input type="number" class="form-control border-0 shadow-none" formControlName="valorIngresso" readonly></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Cardapio</ion-label>
+      <ion-input type="text" class="form-control border-0 shadow-none" formControlName="cardapio" readonly></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Quantidade De Ingressos</ion-label>
+      <ion-input type="number" class="form-control border-0 shadow-none" formControlName="qIngresso" readonly></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">Categoria</ion-label>
+      <ion-input type="text" class="form-control border-0 shadow-none" formControlName="categoria" readonly></ion-input>
+    </ion-item>
+    
+  </form>
+  <div>
+    <ion-button type="button" value="Copy Url" (click)="Copy()"  shape="round" fill="outline" color="tertiary" size="default"> Copiar URL </ion-button>
+    <br /> Link: <textarea id="url" rows="1" cols="30"></textarea>
+  </div>
+
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button routerLink="/inicio" color="light">
+      <ion-icon name="exit"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="salvar()" color="primary">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
+

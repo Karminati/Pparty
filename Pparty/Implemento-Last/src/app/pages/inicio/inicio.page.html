@@ -1,0 +1,90 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-button slot="secondary" href="/perfil">
+      <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+      <ion-item slot="">
+        <ion-label position="stacked" id="lugar">Pparty</ion-label>
+      </ion-item>
+  </ion-toolbar>
+    <ion-toolbar>
+      <form [formGroup]="formGroup" (ngSubmit)="pesquisar()">
+        <ion-item>
+          <ion-input placeholder="Pesquise o Titulo da festa" shape="round" type="text" class="form-control border-0 shadow-none" formControlName="pesquisa"></ion-input>
+        </ion-item>
+        <ion-button type="submit" expand="block" color="primary">Search</ion-button>
+      </form>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div id="login">
+    <form class="card">
+      <!-- <img id="back-image" src="assets/images/telas-entrar.jpg"> -->
+      <div class="card-content">
+        <div class="card-content-area">
+          <ion-toolbar>
+            <ion-item>
+              <ion-label position="stacked">Categorias</ion-label>
+              <ion-button type="submit" (click)="Grande()"  shape="round" fill="outline" color="tertiary" size="default"> Festa Grande </ion-button>
+              <ion-button type="submit" (click)="Medio()" shape="round" fill="outline" color="tertiary" size="default"> Festa Media</ion-button>
+              <ion-button type="submit" (click)="Tematica()" shape="round" fill="outline" color="tertiary" size="default"> Festa Tematica</ion-button>
+              <ion-button type="submit" (click)="Diurna()" shape="round" fill="outline" color="tertiary" size="default"> Festa Diurna</ion-button>
+              <ion-button type="submit" (click)="Todas()" shape="round" fill="outline" color="tertiary" size="default"> Sem Filtro</ion-button>
+            </ion-item>
+        </ion-toolbar>
+        </div>
+      </div>
+      <div class="card-content">
+        <div class="card-content-area">
+          <ion-list>
+            <ion-item-sliding *ngFor="let festa of festas; index as i">
+              <ion-item [routerLink]="['/visualizar-festa/', festa.idFesta]" detail>
+                <!-- <ion-thumbnail slot="start">
+                  <ion-img alt="Silhouette of mountains" [src]="fotos[i].imagem" />
+                </ion-thumbnail> -->
+                <ion-label>
+                  <h2>
+                    {{festa.titulo}}
+                  </h2>
+                  <p> {{festa.enderecofesta}} </p>
+                  <p> {{festa.cardapio}} </p>
+                </ion-label>
+              </ion-item>
+            </ion-item-sliding>
+          </ion-list>
+          <!-- <ion-list>
+            <ion-item-sliding *ngFor="let festa of festas; index as i">
+              <ion-item [routerLink]="['/visualizar-festa/', festa.id]" detail>
+                  <ion-thumbnail slot="start">
+                    <ion-img alt="Silhouette of mountains" [src]="fotos[i].imagem" />
+                  </ion-thumbnail>
+                  <ion-label>
+                    <h2>
+                      {{festa.titulo}}
+                    </h2>
+                    <p> {{festa.enderecofesta}} </p>
+                    <p> {{festa.cardapio}} </p>
+                </ion-label>
+              </ion-item>
+            </ion-item-sliding>
+          </ion-list> -->
+        </div>
+      </div>
+    </form>
+  </div>
+
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/festas-salvas" color="primary">
+      <ion-icon name="bookmark-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button routerLink="/add-festa" color="primary">
+      <ion-icon name="add-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+

@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defautHref="/inicio"></ion-back-button>
+    </ion-buttons>
+    <ion-title>festas-salvas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form class="card">
+    <div class="card-content">
+      <div class="card-content-area">
+        <ion-list *ngIf="avaliacoes.length > 0">
+          <ion-item-sliding *ngFor="let avaliacao of avaliacoes; index as i">
+            <ion-item [routerLink]="['/avaliar-festa/', avaliacao.idAvaliacao]" detail>
+              <ion-label>
+                <h2>
+                  {{festas[i].titulo}}
+                </h2>
+                
+                <p> {{festas[i].enderecofesta}} </p>
+                <p> {{avaliacao.quantAvaliacao}} </p>
+              </ion-label>
+            </ion-item>
+          </ion-item-sliding>
+        </ion-list>
+      </div>
+    </div>
+  </form>
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button routerLink="/inicio" color="light">
+      <ion-icon name="exit"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

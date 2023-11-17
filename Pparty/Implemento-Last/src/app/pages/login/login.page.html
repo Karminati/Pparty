@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+<div id="login">
+  <form [formGroup]="formGroup" (ngSubmit)="logar()">
+    <div class="card-content">
+      <div class="card-content-area">
+      <ion-item>
+        <ion-label position="stacked">Email</ion-label>
+        <input type="text" class="form-control border-0 shadow-none"  formControlName="email">
+      </ion-item>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="card-content-area">
+        <ion-item>
+          <ion-label position="stacked">Senha</ion-label>
+          <input type="text" class="form-control border-0 shadow-none" formControlName="senha">
+        </ion-item>
+      </div>
+    </div>
+    <div class="card-content">
+      <div class="card-content-area">
+        <ion-button type="submit" expand="block" color="light" [disabled]="!formGroup.valid">
+          Entrar
+      </ion-button>
+      </div>
+      <div class="card-content-area">
+        <ion-button routerLink="/cadastro" expand="block" color="light">
+            Criar Conta
+        </ion-button>
+      </div>
+    </div>
+  </form>
+</div>
+
+</ion-content>

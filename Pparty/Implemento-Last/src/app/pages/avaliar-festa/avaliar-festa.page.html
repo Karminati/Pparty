@@ -1,0 +1,56 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defautHref="/festas-salvas"></ion-back-button>
+    </ion-buttons>
+    <ion-title>avaliar-festa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <form [formGroup]="formGroup" (ngSubmit)="salvar()">
+
+    <ion-item>
+      <ion-label position="stacked">Festa</ion-label>
+      <input type="text" class="form-control border-0 shadow-none" formControlName="titulo" readonly>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Endereco da Festa</ion-label>
+      <input type="text" class="form-control border-0 shadow-none" formControlName="enderecofesta" readonly>
+    </ion-item>
+    <ion-item>
+      <ion-select label="Nota" placeholder="Nota da festa" formControlName="quantAvaliacao">
+        <ion-select-option value="1">1</ion-select-option>
+        <ion-select-option value="2">2</ion-select-option>
+        <ion-select-option value="3">3</ion-select-option>
+        <ion-select-option value="4">4</ion-select-option>
+        <ion-select-option value="5">5</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-button type="submit" expand="block" color="primary" [disabled]="!formGroup.valid">Salvar</ion-button>
+
+    <!-- <ion-list>
+      <ion-item-sliding *ngFor="let ocorrencia of ocorrencias">
+        <ion-item detail>
+          <ion-label>
+            <h2> {{ocorrencia.descricao}} </h2>
+          </ion-label>
+        </ion-item>
+        <ion-item-options side="start">
+          <ion-item-option (click)="excluir(ocorrencia)" color="danger">Excluir</ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list> -->
+    <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+      <ion-fab-button routerLink="/festas-salvas" color="light">
+        <ion-icon name="exit"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button [routerLink]="['/comentar/', avaliacao.idAvaliacao]" detail color="primary">
+        <ion-icon name="pricetag-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+  </form>
+</ion-content>

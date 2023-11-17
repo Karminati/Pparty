@@ -1,0 +1,32 @@
+#GET
+
+GET http://localhost:8080/api/v1/cliente
+Content-Type: application/json
+###
+
+#POST
+
+POST http://localhost:8080/api/v1/cliente
+Content-Type: application/json
+
+{
+    "idade": 22,
+    "nome":"Gabriel",
+    "email": "gabriel.miranda@gmail.com",
+    "senha":"senha123"
+}
+###
+
+#PUT
+PUT http://localhost:8080/api/v1/cliente
+Content-Type: application/json
+
+{
+    "idade": 18,
+    "nome":"Carminatte",
+    "email": "gabrielm.carminati@gmail.com",
+    "senha":"senha123",
+    "id": 1
+
+}
+###

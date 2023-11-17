@@ -1,0 +1,50 @@
+#GET
+GET http://localhost:8080/api/v1/usuario
+Content-Type: application/json
+###
+
+#GET
+GET http://localhost:8080/api/v1/usuario/1
+Content-Type: application/json
+###
+
+
+#GET
+GET http://localhost:8080/api/v1/usuario/gabriel2@gmail.com/senha123/logar
+Content-Type: application/json
+###
+
+#POST
+POST http://localhost:8080/api/v1/usuario
+Content-Type: application/json
+
+{
+    "idade": 22,
+    "nome":"Gabriel2",
+    "email": "gabriel2@gmail.com",
+    "senha":"senha123",
+    "endereco": "Funcinários, av almeida",
+    "datanasc": "2020-11-16T04:25:03"
+}
+###
+
+#PUT
+PUT http://localhost:8080/api/v1/usuario
+Content-Type: application/json
+
+{
+    "idade": 18,
+    "nome":"Carminatte",
+    "email": "gabrielm.carminati@gmail.com",
+    "senha":"senha123",
+    "endereco": "Funcinários, av almeida",
+    "idUsuario": 1
+}
+###
+
+#DELETE
+DELETE   http://localhost:8080/api/v1/usuario/1
+Content-Type: application/json
+
+
+###

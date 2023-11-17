@@ -1,0 +1,31 @@
+#GET
+GET http://localhost:8080/api/v1/fotoUsuario
+Content-Type: application/json
+###
+
+#POST
+POST http://localhost:8080/api/v1/fotoUsuario
+Content-Type: application/json
+
+{
+    "url": "teste",
+    "idUsuario": 1
+}
+###
+
+#PUT
+PUT http://localhost:8080/api/v1/fotoUsuario
+Content-Type: application/json
+
+{
+    "url": "bagunça",
+    "idFoto": "2"
+}
+###
+
+#DELETE
+DELETE   http://localhost:8080/api/v1/fotoUsuario/2
+Content-Type: application/json
+
+
+###
