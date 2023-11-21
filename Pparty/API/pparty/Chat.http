@@ -1,0 +1,19 @@
+#GET
+GET http://localhost:8080/api/v1/chat/3
+Content-Type: application/json
+###
+
+GET http://localhost:8080/api/v1/chat/1/usuario
+Content-Type: application/json
+###
+
+
+#POST
+POST http://localhost:8080/api/v1/chat
+Content-Type: application/json
+
+{
+    "idUsuario1": 2,
+    "idUsuario2": 4
+}
+###

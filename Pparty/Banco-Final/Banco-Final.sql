@@ -51,18 +51,6 @@ CREATE TABLE tbfotoUsuario (
   CONSTRAINT fk_tbfotoUsuario_Tbusuario FOREIGN KEY (idUsuario) REFERENCES tbusuario (idUsuario) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
-CREATE TABLE tbchat (
-  Mensagem varchar(300) ,
-  idMensagem int(11) NOT NULL AUTO_INCREMENT,
-  idUsuario1 int(11) NOT NULL,
-  idUsuario2 int(11) NOT NULL,
-  PRIMARY KEY (IdMensagem,idUsuario1,idUsuario2),
-  KEY fk_tbChat_TbUsuario1_idx (idUsuario1),
-  KEY fk_tbChat_TbUsuario2_idx (idUsuario2),
-  CONSTRAINT fk_tbChat_TbUsuario1 FOREIGN KEY (idUsuario1) REFERENCES tbusuario (idUsuario) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT fk_tbChat_TbUsuario2 FOREIGN KEY (idUsuario2) REFERENCES tbusuario (idUsuario) ON DELETE NO ACTION ON UPDATE NO ACTION
-);
-
 CREATE TABLE tbAvaliacao (
   idAvaliacao INT(11) NOT NULL AUTO_INCREMENT,
   quantAvaliacao INT(11),
@@ -75,15 +63,26 @@ CREATE TABLE tbAvaliacao (
   CONSTRAINT fk_tbAvaliacao_tbFesta_idx FOREIGN KEY (tbFesta_idFesta) REFERENCES tbfesta (idFesta) ON DELETE NO ACTION ON UPDATE NO ACTION
 );
 
-CREATE TABLE tbmensagens (
-  idMensagens INT(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE tbchat (
+  idChat int(11) NOT NULL AUTO_INCREMENT,
+  idUsuario1 int(11) NOT NULL,
+  idUsuario2 int(11) NOT NULL,
+  PRIMARY KEY (idChat,idUsuario1,idUsuario2),
+  KEY fk_tbChat_TbUsuario1_idx (idUsuario1),
+  KEY fk_tbChat_TbUsuario2_idx (idUsuario2),
+  CONSTRAINT fk_tbChat_TbUsuario1 FOREIGN KEY (idUsuario1) REFERENCES tbusuario (idUsuario) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT fk_tbChat_TbUsuario2 FOREIGN KEY (idUsuario2) REFERENCES tbusuario (idUsuario) ON DELETE NO ACTION ON UPDATE NO ACTION
+);
+
+CREATE TABLE tbmensagem (
+  idMensagem int(11) NOT NULL AUTO_INCREMENT,
   conteudo VARCHAR(320) NOT NULL,
-  tbChat_IdMensagem int(11) NOT NULL,
-  remetente TINYINT(4) NOT NULL,
-  PRIMARY KEY (idMensagens),
-  KEY fk_Mensagens_tbChat1_idx (tbChat_IdMensagem),
-  CONSTRAINT fk_Mensagens_tbChat1 FOREIGN KEY (tbChat_IdMensagem) REFERENCES tbchat (IdMensagem) ON DELETE NO ACTION ON UPDATE NO ACTION
-    );
+  tbChat_IdChat int(11) NOT NULL,
+  udOrigem int(11) NOT NULL,
+  PRIMARY KEY (idMensagem),
+  KEY fk_Mensagens_tbChat1_idx (tbChat_IdChat),
+  CONSTRAINT fk_Mensagens_tbChat1 FOREIGN KEY (tbChat_IdChat) REFERENCES tbchat (IdChat) ON DELETE NO ACTION ON UPDATE NO ACTION
+);
 
 
 CREATE TABLE tbcomentario (
@@ -100,6 +99,7 @@ select * from TbFesta;
 select * from tbAvaliacao;
 select * from tbcomentario;
 
+select * from tbchat tc, tbusuario u where (u.idUsuario = tc.idUsuario1 or u.idUsuario = tc.idUsuario2) and u.idUsuario = 2;
 
 select * from TbFesta where titulo LIKE CONCAT('Festa Te', '%');
 
