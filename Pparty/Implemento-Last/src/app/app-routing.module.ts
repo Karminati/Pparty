@@ -71,6 +71,14 @@ const routes: Routes = [
     path: 'comentar/:id',
     loadChildren: () => import('./pages/comentar/comentar.module').then( m => m.ComentarPageModule)
   },
+  {
+    path: 'meus-chats',
+    loadChildren: () => import('./pages/meus-chats/meus-chats.module').then( m => m.MeusChatsPageModule)
+  },
+  {
+    path: 'chat/:id',
+    loadChildren: () => import('./pages/chat/chat.module').then( m => m.ChatPageModule)
+  },
 ];
 
 @NgModule({

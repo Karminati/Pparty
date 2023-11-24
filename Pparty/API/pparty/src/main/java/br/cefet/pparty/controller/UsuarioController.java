@@ -78,4 +78,10 @@ public class UsuarioController {
         }
         usuarioService.delete(id);
     }
+
+    @GetMapping({"/{id}/usuario"})
+    public Usuario consultarPorId(@PathVariable("id")int id){
+        Usuario ret = usuarioService.consultarporId(id);
+        return ret;
+    }
 }
