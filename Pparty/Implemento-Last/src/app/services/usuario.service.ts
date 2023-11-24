@@ -29,5 +29,10 @@ export class UsuarioService {
   return await this.httpClient.post(this.url, usuario).toPromise();
   }
       
+  async consultarPorId(id: number){
+    let urlAux = this.url + "/" + id + "/usuario";
+    return await this.httpClient.get(urlAux).toPromise();
+
+  }
 
 }

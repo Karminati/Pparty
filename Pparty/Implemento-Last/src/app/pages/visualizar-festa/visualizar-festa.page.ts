@@ -13,6 +13,8 @@ import { AvaliacaoService } from 'src/app/services/avaliacao.service';
 import { Usuario } from 'src/app/model/usuario';
 import { Comentario } from 'src/app/model/comentario';
 import { ComentarioService } from 'src/app/services/comentario.service';
+import { Chat } from 'src/app/model/chat';
+import { ChatService } from 'src/app/services/chat.service';
 
 
 @Component({
@@ -29,13 +31,15 @@ export class VisualizarFestaPage implements OnInit {
   usuario: Usuario;
   comentario: Comentario;
   avaliacoes: Avaliacao[];
+  chat: Chat;
   // ratingMedio: number;
 
-  constructor(private alertController: AlertController, private loadingController: LoadingController, private activatedRoute: ActivatedRoute, private toastController: ToastController, private navController: NavController, private formBuilder: FormBuilder, private festaService: FestaService, private avaliacaoService: AvaliacaoService, private comentarioService: ComentarioService) { 
+  constructor(private alertController: AlertController, private loadingController: LoadingController, private activatedRoute: ActivatedRoute, private toastController: ToastController, private navController: NavController, private formBuilder: FormBuilder, private festaService: FestaService, private avaliacaoService: AvaliacaoService, private comentarioService: ComentarioService, private chatService: ChatService) { 
     this.festa2 = new Festa();
     this.avaliacao = new Avaliacao();
     this.comentario = new Comentario();
     this.avaliacoes = [];
+    this.chat =new Chat();
 
 
     let id = this.activatedRoute.snapshot.params['id'];
@@ -187,7 +191,17 @@ export class VisualizarFestaPage implements OnInit {
     })
   }
 
-   Copy() {
+  async criarChat(){
+    this.chat.idUsuario1 = this.usuario.idUsuario;
+    this.chat.idUsuario2 = this.festa2.idUsuariof;
+
+    this.chatService.salvar(this.chat).then((json)=>{
+      this.chat = <Chat>(json);
+      console.log(this.chat);
+    })
+  }
+
+  Copy() {
     const Url = document.getElementById("url") as HTMLInputElement;
     Url.innerHTML = window.location.href;
     console.log(Url.innerHTML);

@@ -1,5 +1,6 @@
 package br.cefet.pparty.dao;
 
+import br.cefet.pparty.model.Chat;
 import br.cefet.pparty.model.Usuario;
 import java.util.List;
 import org.jdbi.v3.sqlobject.config.RegisterBeanMapper;

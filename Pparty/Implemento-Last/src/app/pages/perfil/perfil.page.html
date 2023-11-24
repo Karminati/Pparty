@@ -36,11 +36,15 @@
         <ion-input  type="text" class="form-control" formControlName="endereco" [readonly]="true"></ion-input>
       </ion-item>
   
-  
     </form>
     <ion-fab vertical="bottom" horizontal="start" slot="fixed">
       <ion-fab-button routerLink="/inicio" color="light">
         <ion-icon name="exit"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+      <ion-fab-button routerLink="/meus-chats" color="light">
+        <ion-icon name="chatbubble-outline"></ion-icon>
       </ion-fab-button>
     </ion-fab>
     <ion-button (click)="Sair()" expand="block" color="dark" class="custom-button">Sair da conta</ion-button>
