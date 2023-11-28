@@ -70,22 +70,23 @@ export class ChatPage implements OnInit {
   ngOnInit() {
   }
 
-   salvar(){
+  async salvar(){
     this.mensagem.conteudo = this.formGroup.value.conteudo;
     this.mensagem.tbChat_IdChat = this.chat.idChat;
     this.mensagem.udOrigem = this.usuario.idUsuario;
 
-    this.mensagemService.salvarMsg(this.mensagem).then((json) =>{
+  await this.mensagemService.salvarMsg(this.mensagem).then((json) =>{
       this.mensagem = <Mensagem>(json);
       console.log(this.mensagem);
 
-      if(this.mensagem){
-        this.mensagens.push(this.mensagem);
-        this.mensagem.conteudo = "";
-        this.formGroup.get('conteudo')?.setValue(this.mensagem.conteudo);
-      }
+        this.mensagemService.consultarPorIdChat(this.chat.idChat).then((json) =>{
+          this.mensagens = <Mensagem[]>(json);
+          console.log(this.mensagens);
+          this.mensagem.conteudo = "";
+          this.formGroup.get('conteudo')?.setValue(this.mensagem.conteudo);
+        })
     })
-
+    console.log(this.mensagens);
   }
 
 }

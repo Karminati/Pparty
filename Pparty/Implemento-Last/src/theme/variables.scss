@@ -75,8 +75,13 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 
-  /** mycolor **/
-
+  /** conteudo-add **/
+  --ion-color-light: #2357a0;
+  --ion-color-light-rgb: 35,87,160;
+  --ion-color-light-contrast: #fff;
+  --ion-color-light-contrast-rgb: 0, 0, 0;
+  --ion-color-light-shade: #1f4e94;
+  --ion-color-light-tint: #255bad;
 }
 
 @media (prefers-color-scheme: dark) {

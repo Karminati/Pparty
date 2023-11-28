@@ -7,49 +7,62 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <form [formGroup]="formGroup" (ngSubmit)="salvar()">
-
-    <ion-item>
-      <ion-label position="stacked">Titulo</ion-label>
-      <ion-input placeholder="Titulo da Festa" shape="round" type="text" class="form-control border-0 shadow-none" formControlName="titulo"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="stacked">Endereco da Festa</ion-label>
-      <ion-input placeholder="Endereço da Festa" type="text" class="form-control border-0 shadow-none" formControlName="endereco"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="stacked">Data da Festa</ion-label>
-      <ion-input type="date" class="form-control border-0 shadow-none" formControlName="data"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="stacked">Valor do Ingresso</ion-label>
-      <ion-input placeholder="Valor do Ingresos individual" type="number" class="form-control border-0 shadow-none" formControlName="valorIngresso"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="stacked">Cardapio</ion-label>
-      <ion-input placeholder="Cardapio Total da Festa" type="text" class="form-control border-0 shadow-none" formControlName="cardapio"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-label position="stacked">Quantidade De Ingressos</ion-label>
-      <ion-input placeholder="Quantidade total de Ingressos" type="number" class="form-control border-0 shadow-none" formControlName="qingresso"></ion-input>
-    </ion-item>
-
-    <ion-item>
-      <ion-select label="Categoria" placeholder="Categoria da festa" formControlName="categoria">
-        <ion-select-option value="Festa Grande">Festa Grande</ion-select-option>
-        <ion-select-option value="Festa Média">Festa Média</ion-select-option>
-        <ion-select-option value="Festa Temática">Festa Temática</ion-select-option>
-        <ion-select-option value="Festa Diurna">Festa Diurna</ion-select-option>
-      </ion-select>
-    </ion-item>
-    
-    <!-- 
+<div id="tela">
+  <div class="formulario">
+    <ion-content>
+      <form [formGroup]="formGroup" (ngSubmit)="salvar()">
+        <div class="itens">
+          <ion-item>
+            <ion-label position="stacked" color="dark">Titulo</ion-label>
+            <ion-input class="custom-input" placeholder="Titulo da Festa" shape="round" type="text"
+              class="form-control border-0 shadow-none" formControlName="titulo"></ion-input>
+          </ion-item>
+        </div>
+        <div class="itens">
+          <ion-item>
+            <ion-label position="stacked">Endereco da Festa</ion-label>
+            <ion-input placeholder="Endereço da Festa" type="text" class="form-control border-0 shadow-none"
+              formControlName="endereco"></ion-input>
+          </ion-item>
+        </div>
+        <div class="itens">
+          <ion-item>
+            <ion-label position="stacked">Data da Festa</ion-label>
+            <ion-input type="date" class="form-control border-0 shadow-none" formControlName="data"></ion-input>
+          </ion-item>
+        </div>
+        <div class="itens">
+          <ion-item>
+            <ion-label position="stacked">Valor do Ingresso</ion-label>
+            <ion-input placeholder="Valor do Ingresos individual" type="number"
+              class="form-control border-0 shadow-none" formControlName="valorIngresso"></ion-input>
+          </ion-item>
+        </div>
+        <div class="itens">
+          <ion-item>
+            <ion-label position="stacked">Cardapio</ion-label>
+            <ion-input placeholder="Cardapio Total da Festa" type="text" class="form-control border-0 shadow-none"
+              formControlName="cardapio"></ion-input>
+          </ion-item>
+        </div>
+        <div class="itens">
+          <ion-item>
+            <ion-label position="stacked">Quantidade De Ingressos</ion-label>
+            <ion-input placeholder="Quantidade total de Ingressos" type="number"
+              class="form-control border-0 shadow-none" formControlName="qingresso"></ion-input>
+          </ion-item>
+        </div>
+        <div class="itens">
+          <ion-item>
+            <ion-select label="Categoria" placeholder="Categoria da festa" formControlName="categoria">
+              <ion-select-option value="Festa Grande">Festa Grande</ion-select-option>
+              <ion-select-option value="Festa Média">Festa Média</ion-select-option>
+              <ion-select-option value="Festa Temática">Festa Temática</ion-select-option>
+              <ion-select-option value="Festa Diurna">Festa Diurna</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </div>
+        <!-- 
     <ion-item>
       <ion-label position="stacked">Categoria</ion-label>
       <input type="text" class="form-control border-0 shadow-none" formControlName="categoria">
@@ -69,16 +82,18 @@
     <ion-button type="button" expand="block" color="dark" (click)="atualizar()">Atualizar localização</ion-button>
 
 -->
-  <ion-button type="submit" expand="block" color="primary">Criar/Editar Festa</ion-button>
-  </form>
-  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+        <ion-button type="submit" expand="block" color="light">Criar/Editar Festa</ion-button>
+      </form>
+      <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button [routerLink]="['/add-ocorrencia/', arvore.id]" detail color="primary">
       <ion-icon name="chevron-forward-circle"></ion-icon>
     </ion-fab-button>
   </ion-fab> -->
-  <!-- <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+      <!-- <ion-fab vertical="bottom" horizontal="start" slot="fixed">
     <ion-fab-button [routerLink]="['/foto/', arvore.id]" detail color="primary">
       <ion-icon name="camera"></ion-icon>
     </ion-fab-button>
   </ion-fab> -->
-</ion-content>
+    </ion-content>
+  </div>
+</div>

@@ -42,6 +42,12 @@ public class AvaliacaoController
         return avaliacaoList;
     }
 
+    @GetMapping("/{idFestaa}/avafesta")
+    public List<Avaliacao> consultarporIdF(@PathVariable("idFestaa") int idFestaa){
+       List<Avaliacao> avaliacaoList = avaliacaoService.consultarporIdF(idFestaa);
+        return avaliacaoList;
+    }
+
 
     @GetMapping("/{idAvaliacao}")
     public Avaliacao consultarAvaliacao(@PathVariable("idAvaliacao") int idAvaliacao){

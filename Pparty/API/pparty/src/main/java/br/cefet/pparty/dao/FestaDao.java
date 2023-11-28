@@ -50,7 +50,30 @@ public interface FestaDao
             " from TbFesta " +
             " where idFesta = :idFesta;")
     int delete (@Bind("idFesta") int idFesta);
-    
+
+
+    @SqlQuery("select * " +
+            " from tbFesta f" +
+            " where f.categoria  = 'Festa Média';")
+    List<Festa> getAllByMedio();
+
+        @SqlQuery("select * " +
+            " from tbFesta f" +
+            " where f.categoria = 'Festa Temática';")
+    List<Festa> getAllByTematica();
+
+
+    @SqlQuery("select * " +
+            " from tbFesta f" +
+            " where f.categoria = 'Festa Grande';")
+    List<Festa> getAllByGrande();
+
+
+    @SqlQuery("select * " +
+            " from tbFesta f" +
+            " where f.categoria = 'Festa Diurna';")
+    List<Festa> getAllByDiurna();
+
 
     @SqlQuery("SELECT * " +
               "FROM TbFesta f " +

@@ -52,8 +52,9 @@ export class AvaliarFestaPage implements OnInit {
     {
       this.avaliacao = <Avaliacao>(json);
       console.log(this.avaliacao);
+      console.log(this.avaliacao.quantAvaliacao);
 
-      this.formGroup.get('quantAvaliacao')?.setValue(this.avaliacao.quantAvaliacao);
+      this.formGroup.get('quantAvaliacao')?.setValue(this.avaliacao.quantAvaliacao.toString());
 
       this.festaService.buscarPorId(parseInt(this.avaliacao.tbFesta_idFesta.toString()))
       .then((json)=>{

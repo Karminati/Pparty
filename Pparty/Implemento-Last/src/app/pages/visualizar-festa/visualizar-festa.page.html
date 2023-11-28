@@ -47,13 +47,23 @@
       <ion-input type="text" class="form-control border-0 shadow-none" formControlName="categoria" readonly></ion-input>
     </ion-item>
 
+    <ion-item>
+      <ion-label position="stacked">Avaliacao Media dos usuarios</ion-label>
+      <ion-input type=" number" class="form-control border-0 shadow-none" formControlName="ratingMedio" readonly></ion-input>
+    </ion-item>
+
   </form>
+
+
+
+
   <div>
     <ion-button type="button" value="Copy Url" (click)="Copy()" shape="round" fill="outline" color="tertiary"
       size="default"> Copiar URL </ion-button>
     <br /> Link: <textarea id="url" rows="1" cols="30"></textarea>
   </div>
 
+  <div class="botoes">
   <ion-fab vertical="bottom" horizontal="start" slot="fixed">
     <ion-fab-button routerLink="/inicio" color="light">
       <ion-icon name="exit"></ion-icon>
@@ -65,13 +75,35 @@
         <ion-icon name="bookmark-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
-  <ion-buttons>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="criarChat()" color="secondary">
+
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button (click)="criarChat()" routerLink="/meus-chats" color="secondary">
       <ion-icon name="chatbubble-outline"></ion-icon>
      </ion-fab-button>
    </ion-fab>
-  </ion-buttons>
+   </div>
 
+
+
+
+  <form class="card">
+    <div class="card-content">
+      <div class="card-content-area">
+        <ion-list *ngIf="avaliacoes.length > 0">
+          <ion-item *ngFor="let avaliacao of avaliacoes; index as i">
+            <ion-item>
+              <ion-label>
+                <h2>
+                  {{usuarios[i].nome}}
+                </h2>
+                
+                <p> {{avaliacao.quantAvaliacao}} </p>
+              </ion-label>
+            </ion-item>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+  </form>
 
 </ion-content>

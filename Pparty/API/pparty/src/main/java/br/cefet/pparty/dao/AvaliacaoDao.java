@@ -34,6 +34,12 @@ public interface AvaliacaoDao
             " and u.idUsuario = :idUsuarioa;")
     List<Avaliacao> getAllByFesta(@Bind("idUsuarioa") int idUsuarioa);
 
+    @SqlQuery("select * " +
+            " from tbAvaliacao ta, tbfesta f " +
+            " where f.idFesta = ta.tbFesta_idFesta " +
+            " and f.idFesta = :idFestaa;")
+    List<Avaliacao> getAllBy(@Bind("idFestaa") int idFestaa);
+
 
     @SqlUpdate (" update tbAvaliacao SET" +
                 " quantAvaliacao = :quantAvaliacao " +

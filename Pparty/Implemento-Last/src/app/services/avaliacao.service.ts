@@ -39,4 +39,9 @@ export class AvaliacaoService {
     let urlAuxiliar = this.url + "/" + id; 
     return await this.httpClient.get(urlAuxiliar).toPromise();
   }
+
+  async porFesta(idFesta: number){
+    let urlAuxiliar = this.url + "/" + idFesta + "/avafesta";
+    return await this.httpClient.get(urlAuxiliar).toPromise(); 
+  }
 }
