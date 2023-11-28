@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Geolocation, PositionOptions} from '@capacitor/geolocation';
+import { Geolocation, PositionOptions } from '@capacitor/geolocation';
 import { Usuario } from 'src/app/model/usuario';
 
 
@@ -21,8 +21,8 @@ export class AddFestaPage implements OnInit {
   usuario: Usuario;
   formGroup: FormGroup;
 
-  latitude:number;
-  longitude:number;
+  latitude: number;
+  longitude: number;
 
   constructor(private activatedRoute: ActivatedRoute, private toastController: ToastController, private navController: NavController, private formBuilder: FormBuilder, private festaService: FestaService, private usuarioService: UsuarioService) {
     this.festa = new Festa();
@@ -65,19 +65,19 @@ export class AddFestaPage implements OnInit {
 
     if (id != null) {
       this.festaService.buscarPorId(parseInt(id))
-      .then((json) => {
-        this.festa = <Festa>(json);
-        this.formGroup.get('titulo')?.setValue(this.festa.titulo);
-        this.formGroup.get('endereco')?.setValue(this.festa.enderecofesta);
-        this.formGroup.get('data')?.setValue(this.festa.data);
-        this.formGroup.get('valorIngresso')?.setValue(this.festa.valorIngresso);
-        this.formGroup.get('cardapio')?.setValue(this.festa.cardapio);
-        this.formGroup.get('qingresso')?.setValue(this.festa.qingresso);
-        this.formGroup.get('categoria')?.setValue(this.festa.categoria);
-      })
-      .catch((erro) => {
-        this.exibirMensagem('Erro ao recuperar o rgistro! Erro:  ' + erro['message']);
-      })
+        .then((json) => {
+          this.festa = <Festa>(json);
+          this.formGroup.get('titulo')?.setValue(this.festa.titulo);
+          this.formGroup.get('endereco')?.setValue(this.festa.enderecofesta);
+          this.formGroup.get('data')?.setValue(this.festa.data);
+          this.formGroup.get('valorIngresso')?.setValue(this.festa.valorIngresso);
+          this.formGroup.get('cardapio')?.setValue(this.festa.cardapio);
+          this.formGroup.get('qingresso')?.setValue(this.festa.qingresso);
+          this.formGroup.get('categoria')?.setValue(this.festa.categoria);
+        })
+        .catch((erro) => {
+          this.exibirMensagem('Erro ao recuperar o rgistro! Erro:  ' + erro['message']);
+        })
     }
   }
 
@@ -95,6 +95,24 @@ export class AddFestaPage implements OnInit {
     this.festa.qingresso = this.formGroup.value.qingresso;
     this.festa.categoria = this.formGroup.value.categoria;
     this.festa.idUsuariof = this.usuario.idUsuario;
+
+    let atual = new Date();
+
+    console.log(this.festa.data);
+    console.log(atual);
+    console.log(parseFloat(this.festa.data));
+    console.log(parseFloat(atual.toISOString()));
+
+  
+    let partesData = this.festa.data.split("-");
+    let data = new Date(parseInt(partesData[2]), parseInt(partesData[1]) - 1, parseInt(partesData[0]));
+    console.log(data);
+    if (data < new Date()){
+      this.exibirMensagem('A data da festa nao pode ser uma data passada');
+      this.navController.navigateBack('/minhas-festas')
+    }
+
+
 
     console.log(this.usuario.idUsuario);
     console.log(this.festa.idUsuariof);
@@ -125,21 +143,21 @@ export class AddFestaPage implements OnInit {
     toast.present();
   }
 
-  async atualizar(){
-    var options : PositionOptions={
-      enableHighAccuracy:true
+  async atualizar() {
+    var options: PositionOptions = {
+      enableHighAccuracy: true
     }
 
     Geolocation.getCurrentPosition(options)
-    .then((res)=>{
-      this.latitude = res.coords.latitude;
-      this.longitude = res.coords.longitude;
-      this.formGroup.get('latitude')?.setValue(this.latitude);
-      this.formGroup.get('longitude')?.setValue(this.longitude);
-    })
-    .catch((erro)=>{
-      alert(JSON.stringify(erro))
-    })
+      .then((res) => {
+        this.latitude = res.coords.latitude;
+        this.longitude = res.coords.longitude;
+        this.formGroup.get('latitude')?.setValue(this.latitude);
+        this.formGroup.get('longitude')?.setValue(this.longitude);
+      })
+      .catch((erro) => {
+        alert(JSON.stringify(erro))
+      })
   }
 
 }
