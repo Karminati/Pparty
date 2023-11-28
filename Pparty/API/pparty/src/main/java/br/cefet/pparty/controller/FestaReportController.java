@@ -39,7 +39,7 @@ public class FestaReportController {
             produces = MediaType.APPLICATION_PDF_VALUE
     )
     public ResponseEntity<InputStreamResource> getFestaReport() throws IOException {
-        File file = ResourceUtils.getFile("C:\\Users\\gabri\\OneDrive\\Documentos\\Escola - Tecnico\\git-PP\\Pparty\\API\\pparty\\src\\main\resources\\report\\festa.jasper");
+        File file = ResourceUtils.getFile("C:\\Users\\gabri\\OneDrive\\Documentos\\Escola - Tecnico\\git-PP\\Pparty\\API\\pparty\\src\\main\\resources\\report\\festa.jasper");
         InputStream inputStream = new FileInputStream(file);
         OutputStream outputStream = new ByteArrayOutputStream();
 
@@ -117,7 +117,8 @@ public class FestaReportController {
             produces = MediaType.APPLICATION_PDF_VALUE
     )
     public ResponseEntity<InputStreamResource> getFestaReportTematica() throws IOException {
-        File file = ResourceUtils.getFile("C:\\Users\\gabri\\OneDrive\\Documentos\\Escola - Tecnico\\git-PP\\Pparty\\API\\pparty\\src\\main\\resources\\report\festa.jasper");
+        File file = ResourceUtils.getFile("C:\\Users\\gabri\\OneDrive\\Documentos\\Escola - Tecnico\\git-PP\\Pparty\\API\\pparty\\src\\main\\resources\\report\\festa.jasper");
+
         InputStream inputStream = new FileInputStream(file);
         OutputStream outputStream = new ByteArrayOutputStream();
 
