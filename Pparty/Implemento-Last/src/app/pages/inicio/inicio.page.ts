@@ -230,5 +230,25 @@ export class InicioPage implements OnInit
     toast.present();
   }  
 
+  async GrandeReport()
+  {
+    window.location.href = "http://localhost:8080/api/v1/report/festa/grande";
+  }
+
+  async MedioReport()
+  {
+    window.location.href = "http://localhost:8080/api/v1/report/festa/media";
+  }
+
+  async TematicaReport()
+  {
+    window.location.href = "http://localhost:8080/api/v1/report/festa/tematica";
+  }
+
+  async DiurnaReport()
+  {
+    window.location.href = "http://localhost:8080/api/v1/report/festa/diurna";
+  }
+
 
 }

@@ -46,9 +46,29 @@ public class FestaService{
         festaDao.delete(idFesta);
     }
 
-    public List<Festa> consultarporIdusuario (int idUsuario)
+    public List<Festa> consultarporIdusuario (int idUsuario )
     {
        return festaDao.getAllByUsuario(idUsuario);
+    }
+
+    public List<Festa> consultarporMedio ()
+    {
+       return festaDao.getAllByMedio();
+    }
+
+    public List<Festa> consultarporGrande ()
+    {
+       return festaDao.getAllByGrande();
+    }
+
+    public List<Festa> consultarporTematica ()
+    {
+       return festaDao.getAllByTematica();
+    }
+
+    public List<Festa> consultarporDiurna ()
+    {
+       return festaDao.getAllByDiurna();
     }
 
     public List<Festa> buscarPorFiltro (String pesquisa)

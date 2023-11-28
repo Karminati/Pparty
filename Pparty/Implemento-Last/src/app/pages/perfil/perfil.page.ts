@@ -68,4 +68,10 @@ export class PerfilPage implements OnInit {
     });
     toast.present();
   }
-}
+
+  async Festas()
+  {
+    this.usuario.idUsuario;
+    window.location.href = "http://localhost:8080/api/v1/report/festa/" +this.usuario.idUsuario +"/usuario";
+  }
+} 

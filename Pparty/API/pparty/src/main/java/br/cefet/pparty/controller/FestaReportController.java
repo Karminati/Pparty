@@ -13,6 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,7 +39,7 @@ public class FestaReportController {
             produces = MediaType.APPLICATION_PDF_VALUE
     )
     public ResponseEntity<InputStreamResource> getFestaReport() throws IOException {
-        File file = ResourceUtils.getFile("C:\\Users\\gabri\\OneDrive\\Documentos\\Escola - Tecnico\\git-PP\\Pparty\\API\\pparty\\src\\main\\resources\\report\\festa.jasper");
+        File file = ResourceUtils.getFile("C:\\Users\\gabri\\OneDrive\\Documentos\\Escola - Tecnico\\git-PP\\Pparty\\API\\pparty\\src\\main\resources\\report\\festa.jasper");
         InputStream inputStream = new FileInputStream(file);
         OutputStream outputStream = new ByteArrayOutputStream();
 
@@ -59,4 +60,133 @@ public class FestaReportController {
                 .body(new InputStreamResource(new ByteArrayInputStream(byteReporte)));
     }
 
+        @GetMapping(
+            value = "/media",
+            produces = MediaType.APPLICATION_PDF_VALUE
+    )
+    public ResponseEntity<InputStreamResource> getFestaReportMedia() throws IOException {
+        File file = ResourceUtils.getFile("C:\\Users\\gabri\\OneDrive\\Documentos\\Escola - Tecnico\\git-PP\\Pparty\\API\\pparty\\src\\main\\resources\\report\\festa.jasper");
+        InputStream inputStream = new FileInputStream(file);
+        OutputStream outputStream = new ByteArrayOutputStream();
+
+        List<Festa> festaList = festaService.consultarporMedio();
+
+        Map parameters = new HashMap();
+        JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(festaList);
+        byte [] byteReporte = null;
+        try {
+            JasperPrint print = JasperFillManager.fillReport(inputStream, parameters, beanColDataSource);
+            byteReporte = JasperExportManager.exportReportToPdf(print);
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(new ByteArrayInputStream(byteReporte)));
+    }    
+    
+    @GetMapping(
+            value = "/grande",
+            produces = MediaType.APPLICATION_PDF_VALUE
+    )
+    public ResponseEntity<InputStreamResource> getFestaReportGrande() throws IOException {
+        File file = ResourceUtils.getFile("C:\\Users\\gabri\\OneDrive\\Documentos\\Escola - Tecnico\\git-PP\\Pparty\\API\\pparty\\src\\main\\resources\\report\\festa.jasper");
+        InputStream inputStream = new FileInputStream(file);
+        OutputStream outputStream = new ByteArrayOutputStream();
+
+        List<Festa> festaList = festaService.consultarporGrande();
+
+        Map parameters = new HashMap();
+        JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(festaList);
+        byte [] byteReporte = null;
+        try {
+            JasperPrint print = JasperFillManager.fillReport(inputStream, parameters, beanColDataSource);
+            byteReporte = JasperExportManager.exportReportToPdf(print);
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(new ByteArrayInputStream(byteReporte)));
+    }   
+    
+    @GetMapping(
+            value = "/tematica",
+            produces = MediaType.APPLICATION_PDF_VALUE
+    )
+    public ResponseEntity<InputStreamResource> getFestaReportTematica() throws IOException {
+        File file = ResourceUtils.getFile("C:\\Users\\gabri\\OneDrive\\Documentos\\Escola - Tecnico\\git-PP\\Pparty\\API\\pparty\\src\\main\\resources\\report\festa.jasper");
+        InputStream inputStream = new FileInputStream(file);
+        OutputStream outputStream = new ByteArrayOutputStream();
+
+        List<Festa> festaList = festaService.consultarporTematica();
+
+        Map parameters = new HashMap();
+        JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(festaList);
+        byte [] byteReporte = null;
+        try {
+            JasperPrint print = JasperFillManager.fillReport(inputStream, parameters, beanColDataSource);
+            byteReporte = JasperExportManager.exportReportToPdf(print);
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(new ByteArrayInputStream(byteReporte)));
+    }    
+    
+    @GetMapping(
+            value = "/diurna",
+            produces = MediaType.APPLICATION_PDF_VALUE
+    )
+    public ResponseEntity<InputStreamResource> getFestaReportDiurna() throws IOException {
+        File file = ResourceUtils.getFile("C:\\Users\\gabri\\OneDrive\\Documentos\\Escola - Tecnico\\git-PP\\Pparty\\API\\pparty\\src\\main\\resources\\report\\festa.jasper");
+        InputStream inputStream = new FileInputStream(file);
+        OutputStream outputStream = new ByteArrayOutputStream();
+
+        List<Festa> festaList = festaService.consultarporDiurna();
+
+        Map parameters = new HashMap();
+        JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(festaList);
+        byte [] byteReporte = null;
+        try {
+            JasperPrint print = JasperFillManager.fillReport(inputStream, parameters, beanColDataSource);
+            byteReporte = JasperExportManager.exportReportToPdf(print);
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(new ByteArrayInputStream(byteReporte)));
+    }
+
+    @GetMapping(
+            value = "/{idUsuario}/usuario",
+            produces = MediaType.APPLICATION_PDF_VALUE
+    )
+    public ResponseEntity<InputStreamResource> getFestaReportUsuario(@PathVariable("idUsuario") int idUsuario) throws IOException {
+        File file = ResourceUtils.getFile("C:\\Users\\gabri\\OneDrive\\Documentos\\Escola - Tecnico\\git-PP\\Pparty\\API\\pparty\\src\\main\\resources\\report\\festa.jasper");
+        InputStream inputStream = new FileInputStream(file);
+        OutputStream outputStream = new ByteArrayOutputStream();
+
+        List<Festa> festaList = festaService.consultarporIdusuario(idUsuario);
+
+        Map parameters = new HashMap();
+        JRBeanCollectionDataSource beanColDataSource = new JRBeanCollectionDataSource(festaList);
+        byte [] byteReporte = null;
+        try {
+            JasperPrint print = JasperFillManager.fillReport(inputStream, parameters, beanColDataSource);
+            byteReporte = JasperExportManager.exportReportToPdf(print);
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+
+        return ResponseEntity.ok()
+                .contentType(MediaType.APPLICATION_PDF)
+                .body(new InputStreamResource(new ByteArrayInputStream(byteReporte)));
+    }
 }

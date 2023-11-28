@@ -11,6 +11,7 @@ import { AlertController } from '@ionic/angular';
 import { Avaliacao } from 'src/app/model/avaliacao';
 import { AvaliacaoService } from 'src/app/services/avaliacao.service';
 import { Usuario } from 'src/app/model/usuario';
+import { UsuarioService } from 'src/app/services/usuario.service';
 import { Comentario } from 'src/app/model/comentario';
 import { ComentarioService } from 'src/app/services/comentario.service';
 import { Chat } from 'src/app/model/chat';
@@ -29,40 +30,54 @@ export class VisualizarFestaPage implements OnInit {
   formGroup: FormGroup;
   avaliacao: Avaliacao;
   usuario: Usuario;
+  usuarios: Usuario[];
   comentario: Comentario;
   avaliacoes: Avaliacao[];
   chat: Chat;
+  avaliacaoForm: FormGroup;
+  ratingMedio: number;
   // ratingMedio: number;
 
-  constructor(private alertController: AlertController, private loadingController: LoadingController, private activatedRoute: ActivatedRoute, private toastController: ToastController, private navController: NavController, private formBuilder: FormBuilder, private festaService: FestaService, private avaliacaoService: AvaliacaoService, private comentarioService: ComentarioService, private chatService: ChatService) { 
+  constructor(private alertController: AlertController, private loadingController: LoadingController, private activatedRoute: ActivatedRoute, private toastController: ToastController, private navController: NavController, private formBuilder: FormBuilder, private festaService: FestaService, private avaliacaoService: AvaliacaoService, private comentarioService: ComentarioService, private chatService: ChatService, private usuarioService: UsuarioService) { 
     this.festa2 = new Festa();
     this.avaliacao = new Avaliacao();
     this.comentario = new Comentario();
     this.avaliacoes = [];
     this.chat =new Chat();
+    this.usuarios = [];
+    this.ratingMedio = 0;
 
 
     let id = this.activatedRoute.snapshot.params['id'];
     this.idFesta = id;
+    console.log(this.idFesta);
 
-    // this.avaliacaoService.listarTd()
-    // .then((json) => {
-    //   this.avaliacoes = <Avaliacao[]> (json);
-    // });
+    this.avaliacaoService.porFesta(parseInt(id))
+    .then((json) => {
+      this.avaliacoes = <Avaliacao[]> (json);
+      console.log(this.avaliacoes);
 
-    // this.ratingMedio = 0;
-    // let j = 0;
-    // for(let i = 0; i <= this.avaliacoes.length; i++){
-    //   console.log(this.avaliacoes[i].tbFesta_idFesta);
-    //   console.log(this.idFesta);
-    //   if(this.avaliacoes[i].tbFesta_idFesta === this.idFesta){
-    //     this.ratingMedio = this.ratingMedio + this.avaliacoes[i].quantAvaliacao;
-    //     console.log(this.avaliacoes[i].quantAvaliacao)
-    //     j++;
-    //   }
-    // }
+      let j = 0;
+      for(let i = 0; i < this.avaliacoes.length; i++){
+        this.ratingMedio = this.ratingMedio + this.avaliacoes[i].quantAvaliacao;
+        console.log(this.avaliacoes[i].quantAvaliacao);
+        j++;
+      }
+      console.log(this.ratingMedio);
+      this.ratingMedio = this.ratingMedio/j;
+      console.log(this.ratingMedio);
+      this.formGroup.get('ratingMedio')?.setValue(this.ratingMedio);
 
-    // this.ratingMedio = this.ratingMedio/j;
+      for(let i = 0; i< this.avaliacoes.length; i++){
+        let idUsuario = this.avaliacoes[i].idUsuarioa;
+        this.usuarioService.consultarPorId(parseInt(idUsuario.toString()))
+        .then((json)=>{
+          this.usuarios[i] = <Usuario> (json);
+        });
+        console.log(this.usuarios[i]);
+      }
+    });
+
 
     this.usuario = JSON.parse(localStorage.getItem('usuario') || '[]');
 
@@ -93,6 +108,17 @@ export class VisualizarFestaPage implements OnInit {
         ])],
         'longitude': [this.festa2.longitude, Validators.compose([
         ])],
+        'ratingMedio': [this.ratingMedio, Validators.compose([
+        ])],
+      }
+    )
+
+    this.avaliacaoForm = this.formBuilder.group(
+      {
+        'titulo': [this.festa2.titulo, Validators.compose([
+          Validators.required
+        ])],
+
       }
     )
 

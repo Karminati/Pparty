@@ -51,4 +51,9 @@ public class AvaliacaoService{
     {
        return avaliacaoDao.getAllByFesta(idUsuarioa);
     }
+
+        public List<Avaliacao> consultarporIdF (int idFestaa)
+    {
+       return avaliacaoDao.getAllBy(idFestaa);
+    }
 }

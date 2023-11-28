@@ -21,7 +21,7 @@ Content-Type: application/json
 {
     "idade": 22,
     "nome":"Gabriel2",
-    "email": "gabriel4@gmail.com",
+    "email": "gabrieal4@gmail.com",
     "senha":"senha123",
     "endereco": "Funcinários, av almeida",
     "datanasc": "2020-11-16T04:25:03"
